@@ -1,0 +1,91 @@
+{
+	"port": 80,
+	"siteName":"Портал поддержки",
+	"lang":"ru",
+	"criptokey":"rgs",
+	"workers":{
+		"minexp":150,
+		"factor":1.4,
+		"lvlstart":true
+	},
+	"quantity":"шт.",
+	"total":"Итог",
+	"currency":"руб.",
+	"dns":["10.72.1.100","10.224.1.21"],
+	"loginRule":["*",1,1], 
+	"mail":{
+		"host": "10.99.16.232",
+		"port": 25,
+		"secure":false,
+		"ignoreTLS":true,
+		"charset":"utf8_unicode_ci",
+		"auth": {
+			"user": "s.desk@tyumen.rgs.ru",
+			"pass": "S.Desk"
+		},
+		"tls":{
+			"rejectUnauthorized": false
+		}
+	},
+	"ldap":{
+		"url":"ldap://10.72.1.100",
+		"username":"tmn-ldap@rgs.ru",
+		"password":"4Sxrex1DJG8M12WKWBLF",
+		"time":"180000",
+		"attribsGeneral":["telephoneNumber", "cn", "mail", "department", "departmentNumber", "employeeNumber", "title", "otherTelephone","sAMAccountName","thumbnailPhoto","distinguishedName"],
+		"filterGeneral":"(!(displayName=*Scan*))(!(displayName=*Агенты*))(memberOf:1.2.840.113556.1.4.1941:=CN=Tyumen Users,OU=Подразделения,OU=Groups,OU=Филиал ПАО Росгосстрах в Тюменской области,OU=ПАО Росгосстрах,OU=Structure,DC=rgs,DC=ru)",
+		"filterUsers":"(objectCategory=user)(objectClass=user)",
+		"filterUsersDisabled":"(userAccountControl:1.2.840.113556.1.4.803:=2)",
+		"filterUsersEnabled":"(!(userAccountControl:1.2.840.113556.1.4.803:=2))",
+		"filterUsersCreated":"(whenCreated>=%dt%.0Z&)",
+		"filterUsersChanged":"(whenChanged>=%dt%.0Z&)",		
+		"groups":[
+			{				
+				"base":"OU=Подразделения,OU=Groups,OU=Филиал ПАО Росгосстрах в Тюменской области,OU=ПАО Росгосстрах,OU=Structure,DC=rgs,DC=ru",
+				"attribs":["telephoneNumber", "cn", "mail", "department", "departmentNumber", "extensionAttribute3", "extensionAttribute2", "extensionAttribute1"],
+				"filter":"(&)"
+			}
+		],
+		"connections":[
+			{
+				"base":"OU=Филиал ПАО Росгосстрах в Тюменской области,OU=ПАО Росгосстрах,OU=Structure,DC=rgs,DC=ru"
+			},
+			{
+				"base":"OU=Блок в Тюменской области,OU=Региональный блок Центрального офиса,OU=ПАО РОСГОССТРАХ,OU=ПАО Росгосстрах,OU=Structure,DC=rgs,DC=ru"
+			}
+		],
+		"connect":{
+			"base":"OU=ПАО Росгосстрах,OU=Structure,DC=rgs,DC=ru",
+			"url":"ldap://10.72.1.100",
+			"dn":"tmn-ldap@rgs.ru",
+			"password":"4Sxrex1DJG8M12WKWBLF"
+		},
+		"attribs":["telephoneNumber", "cn", "mail", "department", "departmentNumber", "employeeNumber", "title", "otherTelephone"],
+		"filter":"(&(&(objectCategory=user)(objectClass=user)(!(cn=Tyumen*))(!(displayName=*Агенты*))(mail=*@tyumen.rgs.ru)(!(userAccountControl:1.2.840.113556.1.4.803:=2))))"
+	},
+	"xmpp":{
+		"host":"10.72.1.101",
+		"jid": "tmn-sd",
+		"password": "90B9qrKHwlhAc10rfZ9r",
+		"sufix":"rgs.ru"		
+	},
+	"db":{
+		"connectionLimit" 	: 30,
+		"host"     			: "localhost",
+		"user"    			: "vdesk",
+		"password" 			: "wQGZZNXqpbn3VunH",
+		"database" 			: "sdesk",
+		"debug"				: false
+	},
+	"session":{
+		"secret":"KillerIsJim",
+		"key":"ssid",
+		"resave": "false",
+		"saveUninitialized": "true",
+		"cookie":{
+			"path":"/",
+			"httpOnly":true,
+			"maxAge":null
+		}
+	}
+}

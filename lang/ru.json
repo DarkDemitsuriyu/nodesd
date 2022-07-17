@@ -1,0 +1,63 @@
+{
+	"clients":{
+		"lefttipes":{
+			"infotiketstitle":"Информация о заявке",
+			"infotiketsinput":"Введите номер вашей заявки",
+			"infotiketsbutton":"Просмотр",
+			"newstitle":"Последняя новость"
+		}
+	},
+	"sections":{
+		"tikets":"Заявки",
+		"help":"Справочник",
+		"knowledgebase":"База знаний",
+		"links":"Ссылки",
+		"login":"Вход",
+		"logout":"Выход",
+		"vote":"Голосование",
+		"registration":"Регистрация",
+		"confirmtrue":"Подтверждение выполнения заявки",
+		"comment":"Комментарий"
+	},
+	"fields":{
+		"username":"Логин",
+		"password":"Пароль"
+	},
+	"buttons":{
+		"login":"Войти",
+		"send":"Отправить"
+	},
+	"messages":{
+		"loginfaild":"Такой пользователь не существует или уволен.",
+		"passwordfaild":"Не верный пароль."
+	},
+	"workers":{
+		"others":{
+			"topmenubtn":{
+				"settings":"Настройки",
+				"exit":"Выход"
+			},
+			"statusbar":{
+				"all":"Всего",
+				"new":"Новых",
+				"compleet":"Выполнено",
+				"confirmation":"На подтверждении",
+				"performed":"На выполнении"
+			}
+		},
+		"tikets":{
+			"form":{
+				"btns":{
+					"compleet":"Выполнено",
+					"failure":"Отказать",
+					"print":"Распечатать",
+					"attach":"Вложение",
+					"rettowork":"Вернуть в работу",
+					"editor":"Редактор",
+					"refuse":"Отложить",
+					"getTiket":"Взять заявку"
+				}
+			}
+		}
+	}
+}

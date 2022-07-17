@@ -1,0 +1,27 @@
+extends ./layout/clientLayout
+block append head
+  link(rel='stylesheet', href='/css/clients/jquery.dropdown.css')
+  link(rel='stylesheet', href='/css/clients/jquery.autocomplete.css')  
+  script(src='/js/clients/inputmask.js')
+  script(src='/js/clients/jquery.inputmask.js')
+  script(src='/js/clients/jquery.dropdown.js')
+  script(src='/js/clients/test.js')
+  script(src='/js/clients/jquery.autocomplete.min.js')
+  script
+    | var users=!{JSON.stringify(users)};
+block content
+  .panel
+    .panel-body
+      .list-group
+        - for(var i=0;i<data.length;i++)
+          a.list-group-item(href='#',onclick='openTiketForm("'+data[i].name+'",'+data[i].id+')')
+            - if(data[i].icon===null)
+              .row-action-primary
+                i.mdi-file-folder
+            - else
+              .row-picture
+                img.circle(src='data:image/png;base64,'+data[i].icon)
+            .row-content
+              h3.list-group-item-heading=data[i].name
+              p.list-group-item-text=data[i].description
+          .list-group-separator

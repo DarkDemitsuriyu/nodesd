@@ -1,0 +1,121 @@
+exports.get=function(req,res,next){
+	var Client = require('node-poplib-gowhich').Client;
+	var client = new Client({
+		hostname: '10.99.16.232',
+		port:  110,
+		tls: false,
+		mailparser: true,
+		username: 'test_it@tyumen.rgs.ru',
+		password: 'test289955'
+	});
+	client.connect(function() {
+		client.retrieveAll(function(err, messages) {
+			console.log(err)
+			console.log(messages)
+			messages.forEach(function(message) {
+				console.log(message)				
+				console.log(message.subject);
+			});
+			client.quit();
+		})
+	});
+	/*var pop3 = require("pop3");
+	var client = pop3.Client({});
+	client.connect(, 'test_it@tyumen.rgs.ru', 'test289955');*/
+	/*console.log('connect: ', client.connect('10.99.16.232'));
+
+	console.log('user: ' , client.user('test_it@tyumen.rgs.ru'));
+
+	console.log('pass: ' , client.pass('test289955'));*/
+
+	/*console.log('list: ' , client.list());
+
+	console.log('quit: ' , client.quit());*/
+	
+	//var POP3Client = require("poplib");
+	/*var client = new POP3Client(110, '10.99.16.232', {
+        tlserrs: false,
+        enabletls: false,
+        debug: false
+    });
+	var lang = require('lang');
+	var datas={
+		params:req.params,
+		lang:lang.get('workers')
+	}
+	var send=function(){
+		res.render('getmail', datas);
+	}*/
+	/*client.on("error", function(err) {
+        if (err.errno === 111) console.log("Unable to connect to server");
+        else console.log("Server error occurred");
+        console.log(err);
+	});*/
+
+	/*client.on("connect", function() {
+        console.log("CONNECT success");
+        client.login('test_it@tyumen.rgs.ru', 'test289955');
+	});*/
+
+	/*client.on("invalid-state", function(cmd) {
+		console.log("Invalid state. You tried calling " + cmd);
+	});*/
+
+	/*client.on("locked", function(cmd) {
+		console.log("Current command has not finished yet. You tried calling " + cmd);
+	});*/
+	/*client.on("login", function(status, rawdata) {
+		if (status) {
+			console.log("LOGIN/PASS success");
+			client.list();
+		} else {
+			console.log("LOGIN/PASS failed");
+			client.quit();
+		}
+	});*/
+	/*client.on("list", function(status, msgcount, msgnumber, data, rawdata) {
+		if (status === false) {
+			console.log("LIST failed");
+			client.quit();
+		} else {
+			console.log("LIST success with " + msgcount + " element(s)");
+			if (msgcount > 0){
+						
+				client.retr(2);
+			}				
+			else
+				client.quit();
+		}
+	});*/
+	
+	/*client.on("retr", function(status, msgnumber, data, rawdata) {
+		if (status === true) {
+			console.log("RETR success for msgnumber " + msgnumber);
+			//client.dele(msgnumber);
+			datas.dt=rawdata;
+			console.log(datas)
+			send();	
+			client.quit();
+		} else {
+			console.log("RETR failed for msgnumber " + msgnumber);
+			client.quit();
+		}
+	});*/
+
+/*	client.on("dele", function(status, msgnumber, data, rawdata) {
+		if (status === true) {
+			console.log("DELE success for msgnumber " + msgnumber);
+			client.quit();
+		} else {
+			console.log("DELE failed for msgnumber " + msgnumber);
+			client.quit();
+		}
+	});
+*/
+	/*client.on("quit", function(status, rawdata) {
+		if (status === true) console.log("QUIT success");
+		else console.log("QUIT failed");
+	});*/
+	
+	
+};

@@ -1,0 +1,24 @@
+extends ./layout/clientLayout
+block append head
+  script(type='text/javascript', src='/js/clients/jquery.validatebox.js')
+  script
+    | $(document).ready(function(){$("li [href='/login']").parent().addClass("active");});
+  script(src='/js/clients/login.js')
+
+block content
+  .panel
+    .panel-body
+      form#login-form(name="login-form",method="post")
+        .row
+          .col-md-6.col-md-offset-3
+            .form-group
+              label(for='username')=username
+              input#username.form-control(type='text',name='username',required='true')
+              span.hint.text-danger
+            .form-group(style='margin-top:30px;')
+              label(for='password')=password
+              input#password.form-control(type='password',name='password',required='true')
+              span.hint.text-danger
+            .row
+              .col-md-8.col-md-offset-4
+                button.btn.btn-primary.btn-raised(type="submit")=button

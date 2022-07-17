@@ -1,0 +1,91 @@
+{
+	"port": 80,
+	"siteName":"Портал поддержки",
+	"lang":"ru",
+	"criptokey":"",
+	"workers":{
+		"minexp":150,
+		"factor":1.4,
+		"lvlstart":true
+	},
+	"quantity":"шт.",
+	"total":"Итог",
+	"currency":"руб.",
+	"dns":["",""],
+	"loginRule":["*",1,1], 
+	"mail":{
+		"host": "",
+		"port": 25,
+		"secure":false,
+		"ignoreTLS":true,
+		"charset":"utf8_unicode_ci",
+		"auth": {
+			"user": "",
+			"pass": ""
+		},
+		"tls":{
+			"rejectUnauthorized": false
+		}
+	},
+	"ldap":{
+		"url":"",
+		"username":"",
+		"password":"",
+		"time":"180000",
+		"attribsGeneral":["telephoneNumber", "cn", "mail", "department", "departmentNumber", "employeeNumber", "title", "otherTelephone","sAMAccountName","thumbnailPhoto","distinguishedName"],
+		"filterGeneral":"",
+		"filterUsers":"(objectCategory=user)(objectClass=user)",
+		"filterUsersDisabled":"(userAccountControl:1.2.840.113556.1.4.803:=2)",
+		"filterUsersEnabled":"(!(userAccountControl:1.2.840.113556.1.4.803:=2))",
+		"filterUsersCreated":"(whenCreated>=%dt%.0Z&)",
+		"filterUsersChanged":"(whenChanged>=%dt%.0Z&)",		
+		"groups":[
+			{				
+				"base":"",
+				"attribs":["telephoneNumber", "cn", "mail", "department", "departmentNumber", "extensionAttribute3", "extensionAttribute2", "extensionAttribute1"],
+				"filter":"(&)"
+			}
+		],
+		"connections":[
+			{
+				"base":""
+			},
+			{
+				"base":""
+			}
+		],
+		"connect":{
+			"base":"",
+			"url":"",
+			"dn":"",
+			"password":""
+		},
+		"attribs":["telephoneNumber", "cn", "mail", "department", "departmentNumber", "employeeNumber", "title", "otherTelephone"],
+		"filter":""
+	},
+	"xmpp":{
+		"host":"",
+		"jid": "",
+		"password": "",
+		"sufix":""		
+	},
+	"db":{
+		"connectionLimit" 	: 30,
+		"host"     			: "localhost",
+		"user"    			: "",
+		"password" 			: "",
+		"database" 			: "sdesk",
+		"debug"				: false
+	},
+	"session":{
+		"secret":"",
+		"key":"ssid",
+		"resave": "false",
+		"saveUninitialized": "true",
+		"cookie":{
+			"path":"/",
+			"httpOnly":true,
+			"maxAge":null
+		}
+	}
+}

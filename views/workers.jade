@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    title=params.siteName
+    link#theme(rel='stylesheet', href='/css/workers/themes/metro-red/easyui.css')
+    link(rel='stylesheet', href='/css/workers/themes/color.css')
+    link(rel='stylesheet', href='/css/workers/themes/icon.css')
+    link(rel='stylesheet', href='/css/workers/myicons.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/workers/jquery.easyui.min.js')
+    script(type='text/javascript', src='/js/workers/easyui-lang-ru.js')
+    script(type='text/javascript', src='/js/workers/datagrid-filter.js')
+    script(type='text/javascript', src='/js/workers/treegrid-dnd.js')
+    script(type='text/javascript', src='/js/workers/datagrid-cellediting.js')
+    script(type='text/javascript', src='/js/workers/password-generator.min.js')
+    script(type='text/javascript', src='/vendor/bower_components/moment/moment.js')
+    script(type='text/javascript', src='/socket.io/socket.io.js')
+    script(type='text/javascript', src='/js/workers/constructors.js')
+    script(type='text/javascript', src='/js/workers/supports.js')
+    script(type='text/javascript', src='/js/workers/main.js')
+    script(type='text/javascript', src='/js/workers/socket.js')
+  body
+  script
+    |localStorage.setItem('lang', JSON.stringify(!{JSON.stringify(lang)}));

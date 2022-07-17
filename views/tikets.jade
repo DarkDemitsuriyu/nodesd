@@ -1,0 +1,29 @@
+extends ./layout/clientLayout
+block append head
+  link(rel='stylesheet', href='/css/clients/bootstrap-select.min.css')
+  link(rel='stylesheet', href='/css/clients/DateTimePicker.min.css')
+  script(src='/js/clients/inputmask.js')
+  script(src='/js/clients/jquery.inputmask.js')
+  script(src='/js/clients/tikets.js')
+  script(src='/js/clients/bootstrap3-typeahead.min.js')
+  script(src='/js/clients/bootstrap-select.min.js')
+  script(src='/js/clients/moment.js')
+  script(src='/js/clients/DateTimePicker.min.js')
+  script(src='/js/clients/DateTimePicker-i18n.js')
+  script(src='/js/clients/DateTimePicker-i18n-ru.js')
+  script
+    | var users=!{JSON.stringify(users)};
+  style
+    | .media-left{float: left; margin-right: 10px;}
+block content
+  .col-sm-12.col-xl-3
+    include partials/msk-btn.jade
+  .col-sm-12.col-xl-6
+    - for(var i=0;i<data.length;i++)
+      a.card.text-white.bg-info.mb-3(style="cursor:pointer")
+        .media.list-group-item.list-group-item-action(href='#',onclick='openTiketForm("'+data[i].name+'",'+data[i].id+')')
+          .media-left
+            span.text-white.text-center.bg-info.img-circle.tikets-icon.fa(class=data[i].icon)
+          .media-body
+            h5.text-dark=data[i].name
+            p.text-secondary=data[i].description

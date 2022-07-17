@@ -1,0 +1,25 @@
+extends ./layout/clientLayout
+block append head
+  link(rel='stylesheet', href='/css/clients/jquery.dataTables.min.css')
+  link(rel='stylesheet', href='/css/clients/dataTables.bootstrap4.min.css')
+  link(rel='stylesheet', href='/css/clients/select.dataTables.min.css')
+  link(rel='stylesheet', href='/css/clients/buttons.dataTables.min.css')
+  link(rel='stylesheet', href='/css/clients/buttons.bootstrap4.min.css')
+  script(src='/js/clients/jquery.dataTables.min.js')
+  script(src='/js/clients/dataTables.select.min.js')
+  script(src='/js/clients/dataTables.buttons.min.js')
+  script(src='/js/clients/buttons.html5.min.js')
+  script(src='/js/clients/dataTables.bootstrap4.min.js')  
+  script(src='/js/clients/buttons.bootstrap4.min.js')
+  script(src='/js/clients/jszip.min.js')
+  script(src='/js/clients/pdfmake.min.js')
+  script(src='/js/clients/help.js')
+  script
+    | var users=!{JSON.stringify(users)};
+  style
+    table.dataTable tbody th, table.dataTable tbody td{font-size: 12px;}
+block content
+  .col-md-12
+    .card
+      .card-body
+        table.table.table-bordered.table-hover.table-condensed.thread-dark#grid-data

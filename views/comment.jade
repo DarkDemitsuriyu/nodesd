@@ -1,0 +1,17 @@
+extends ./layout/clientLayout
+block content
+  .col
+    .row.justify-content-center
+      .col-9
+        .card
+          .card-body
+            form#confirm-false-form(name="comment-form",method="post")
+            - if(confirm==='true')
+              'Ваш комментарий отправлен!'
+            - else
+              input(type='hidden',name='id',value=tiket)
+              .form-group
+                textarea#comment.form-control.floating-label(autofocus=true,rows=10,name='comment',required='true')
+                label(for='comment')=title
+                span.hint.text-danger
+              button.btn.btn-primary.float-right#send-comment(type="submit")=button

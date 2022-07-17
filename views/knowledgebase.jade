@@ -1,0 +1,69 @@
+extends ./layout/clientLayout
+block append head
+  script(type='text/javascript', src='/js/clients/pdf.js')
+  script(type='text/javascript', src='/js/clients/pdf.worker.js')
+  script
+    | $(document).ready(function(){
+    |    $(".nav-tabs").find("li:eq(0)").addClass("active");
+    |    $(".tab-content").find(".tab-pane:eq(0)").addClass("active in");
+    |  });
+    | function getpdf(pdf){
+    |   console.log(pdf)
+    |   var loadingTask = pdfjsLib.getDocument('http://sd.tyumen.rgs.ru/documents/knowledgeBase/'+pdf)
+    |   loadingTask.promise.then(function(pdf) {
+    |     console.log('PDF loaded');
+    |     var pageNumber = 1;
+    |     pdf.getPage(pageNumber).then(function(page) {
+    |       console.log('Page loaded');
+    |       console.log(page);
+    |       var scale = 1.5;
+    |       var viewport = page.getViewport({scale: scale});
+    |       console.log(viewport)
+    |       var canvas = document.getElementById('the-canvas');
+    |       var context = canvas.getContext('2d');
+    |       canvas.height = viewport.viewBox[3];
+    |       canvas.width = viewport.viewBox[2];
+    |       var renderContext = {
+    |         canvasContext: context,
+    |         viewport: viewport
+    |       };
+    |       var renderTask = page.render(renderContext);
+    |       renderTask.promise.then(function () {
+    |         console.log('Page rendered');
+    |       });
+    |     });
+    |   }, function (reason) {
+    |     // PDF loading error
+    |     console.error(reason);
+    |   });
+    | }
+block content
+  .col-lg-8.offset-lg-2.col-md-12
+    .card-columns
+      - for(var i=0;i<data.length;i++)
+        .card
+          .card-header.bg-success.text-white=data[i].name
+          - var items=data[i].items
+          .list-group
+            - for(var j=0;j<items.length;j++)
+              if items[j].link
+                a.list-group-item(target='_blank',href=items[j].link)
+                  i.fa.fa-link.mr-2
+                  span=data[i].items[j].name
+              else
+                a.list-group-item.pdf(href='/getFile?type=knowledgeBase&file='+items[j].file+'&newname='+items[j].name)
+                  i.fa.fa-download.mr-2
+                  span=data[i].items[j].name
+  canvas#the-canvas(height="200",width="200")
+#href='#',onclick='javascript:getpdf("'+items[j].file+'")'
+#  ul.nav.nav-tabs.bg-success.card-header
+#    - for(var i=0;i<data.length;i++)
+#      li
+#        a(href="#panel-"+data[i].id,data-toggle="tab",aria-expanded="true")=data[i].name
+#  .tab-content
+#    - for(var i=0;i<data.length;i++)
+#      - var items=data[i].items
+#        .tab-pane.fade(id="panel-"+data[i].id)
+#          .list-group
+#            - for(var j=0;j<items.length;j++)
+#              a.list-group-item.text-danger(href='/getFile?type=knowledgeBase&file='+items[j].file+'&newname='+items[j].name)=data[i].items[j].name//  .col-md-4//.row

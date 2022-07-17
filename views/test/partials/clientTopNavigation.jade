@@ -1,0 +1,19 @@
+mixin menu(link,name)
+  li
+    a(href=link)=name
+nav
+  .navbar-warning
+    a.brand-logo(href="#")=params.siteName+':'+title
+    ul.right.hide-on-med-and-down
+      if params.auth===1
+        +menu('/workers','Управление')
+        script(type='text/javascript', src='/socket.io/socket.io.js')
+        script(type='text/javascript', src='/js/workers/socket.js')
+      +menu('/',params.sections.tikets)
+      +menu('knowledgebase',params.sections.knowledgebase)
+      +menu('links',params.sections.links)
+      if params.auth===1
+        +menu('#!','Настройки')
+        +menu('/logout',params.sections.logout)
+      else
+        +menu('/login',params.sections.login)

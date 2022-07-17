@@ -1,0 +1,10 @@
+extends ./layout/clientLayout
+block content
+  .col-lg-8.offset-lg-2.col-md-12
+    .card-columns
+      - for(var i=0;i<data.length;i++)
+        a.card.links-link(href=data[i].link)
+          img.card-img-top(src='/images/linksScreens/'+data[i].screen,alt=data[i].name+"("+data[i].link+")")
+          .card-body
+            h5.card-title.text-info=data[i].name
+            // p.card-text=data[i].link

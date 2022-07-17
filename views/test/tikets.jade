@@ -1,0 +1,24 @@
+extends ./layout/clientLayout
+block append head
+  link(rel='stylesheet', href='/css/clients/jquery.dropdown.css')
+  link(rel='stylesheet', href='/css/clients/jquery.autocomplete.css')  
+  script(src='/js/clients/inputmask.js')
+  script(src='/js/clients/jquery.inputmask.js')
+  script(src='/js/clients/jquery.dropdown.js')
+  script(src='/js/clients/tikets.js')
+  script(src='/js/clients/jquery.autocomplete.min.js')
+  script
+    | var users=!{JSON.stringify(users)};
+block content
+  .panel
+    .panel-body
+      ul.collection
+        - for(var i=0;i<data.length;i++)
+          li.collection-item.avatar
+            a(href='#',onclick='openTiketForm("'+data[i].name+'",'+data[i].id+')')
+              - if(data[i].icon===null)
+                i.material-icons.circle
+              - else
+                img.circle(src='data:image/png;base64,'+data[i].icon)
+              span.title=data[i].name
+              p=data[i].description

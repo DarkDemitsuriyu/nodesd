@@ -1,0 +1,15 @@
+{
+	"workers":"SELECT login AS id, if(login='admin','Система',CONCAT(directory_workers.surname, ' ', directory_workers.name,' ', directory_workers.patronymic)) AS name FROM directory_workers WHERE status != 3 AND division=(SELECT division FROM directory_workers WHERE login=?)",
+	"topic":"SELECT id,name FROM directory_topics WHERE id != 5",
+	"statusworkers":"SELECT id,name FROM directory_workers_status",
+	"jobtitle":"SELECT id,name FROM directory_jobtitle",
+	"menu":"SELECT id,name FROM menu_secondary",
+	"mainmenu":"SELECT id,name FROM menu_main",
+	"hardwareitems":"SELECT id,name FROM directory_list_of_equipment WHERE isItem=true ORDER BY name",
+	"group":"SELECT id,name FROM directory_workers_group",
+	"forum":"SELECT id,name FROM clients_forums_knowledge_base",
+	"division":"SELECT id,name FROM directory_divisions",
+	"department":"SELECT sid AS id,name FROM directory_departments",
+	"contractor":"SELECT id,name FROM directory_contractors",
+	"hardwaresections":"SELECT id,name FROM directory_list_of_equipment WHERE isItem=false ORDER BY name"
+}

@@ -1,0 +1,29 @@
+mixin menu(link,name)
+  li.nav-item
+    a.nav-link(href=link)=name
+nav.navbar.navbar-dark.bg-info.fixed-top.navbar-expand-lg
+  a.navbar-brand(href='/')=params.siteName+':'+title
+  
+  button.navbar-toggler(type="button",data-toggle="collapse",data-target="#navbarNav",aria-controls="navbarNav",aria-expanded="false",aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse.justify-content-end#navbarNav
+    .form-inline.my-2.mx-4.my-md-0
+      .input-group
+        input.form-control#tikets-info-input(style="width:250px",type="search",placeholder=params.lefttipes.infotiketsinput,aria-label="Search")
+        input-group-append
+          button#tiket-info-btn.btn.btn-danger.center-block=params.lefttipes.infotiketsbutton
+    ul.navbar-nav
+      if params.auth===1
+        +menu('/workers','Управление')
+          script(type='text/javascript', src='/socket.io/socket.io.js')
+          script(type='text/javascript', src='/js/workers/socket.js')
+      +menu('help','Справочник')
+      +menu('/',params.sections.tikets)
+      +menu('knowledgebase',params.sections.knowledgebase)
+      +menu('links',params.sections.links)
+      
+      //+menu('vote',params.sections.vote)
+      if params.auth===1
+        +menu('/logout',params.sections.logout)
+      else
+        +menu('/login',params.sections.login)

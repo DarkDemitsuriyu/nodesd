@@ -1,0 +1,14 @@
+{
+  "apps" : [{
+    "name"        : "Service-Desk",
+    "script"      : "app.js",
+    "watch"       : true,
+    "ignore_watch"  :  ["public","bin","tmp","documents","node_modules","views"],
+    "merge_logs"  : true,
+	"log_date_format"  : "YYYY-MM-DD HH:mm Z",
+    "env": {
+        "NODE_PATH":".",
+		"NODE_ENV": "development"
+    }
+  }]
+}

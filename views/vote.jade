@@ -1,0 +1,72 @@
+extends ./layout/clientLayout
+block append head
+  link(rel='stylesheet', href='/css/clients/bootstrap-select.min.css')
+  link(rel='stylesheet', href='/css/clients/jquery.fancybox.min.css')
+  script(src='/js/clients/vote.js')
+  script(src='/js/clients/bootstrap3-typeahead.min.js')
+  script(src='/js/clients/jquery.fancybox.min.js')
+  script
+    | var users=!{JSON.stringify(users)};
+block content
+  - for(var i=0;i<data.length;i++)
+    form(id="senderVoteForm-"+data[i].id,method="post")
+      .panel-group#accordion(role="tablist",aria-multiselectable="true")
+        .panel.panel-default
+          .panel-heading(role="tab",id="heading"+data[i].id)
+             a.panel-title(role="button",data-toggle="collapse",data-parent="#accordion",href="#collapse"+data[i].id,aria-expanded="true",aria-controls="collapseOne")
+               h4.panel-title=data[i].name
+          .panel-collapse.collapse(id="collapse"+data[i].id,role="tabpanel",aria-labelledby="heading"+data[i].id)
+            .panel-body
+              .form-inline
+                .form-group
+                  label(for="senderVote-"+data[i].id)="E-Mail"
+                  input.form-control.sender-vote(style="width:300px;",id="senderVote-"+data[i].id,name="sender_vote",type="email",autocomplete="off",data-provide="typeahead",required,disabled=data[i].results)
+                button.btn.btn-default(type="button",onclick="handlerVoteBtn("+data[i].id+")",disabled=data[i].results)="Голосовать"
+            if data[i].media
+              .container-fluid
+                .row
+                  - for(var j=0;j<data[i].items.length;j++)
+                    .col-sm-6.col-md-4
+                      .panel.panel-default(id=data[i].id+"-"+data[i].items[j].id,style="height:370px;margin-bottom:23px;")
+                        .panel-heading(style="height:90px;")
+                          .radio
+                            label(style="display:block;width:100%;")
+                              if !data[i].results
+                                input(class="vote-"+data[i].id,type="radio",name="vote",value=data[i].id+"-"+data[i].items[j].id)
+                              span=data[i].items[j].name
+                        .panel-body(style="height:240px;")
+                          case data[i].items[j].image.split('.')[1]
+                            when 'png'
+                              a(style="width:100%;height:100%;display:block;text-align:center;",href="/media/vote/"+data[i].items[j].image,data-fancybox,data-caption=data[i].items[j].name)
+                                img(style="max-width:100%;max-height:100%;margin:auto;",src="/media/vote/"+data[i].items[j].image,alt=data[i].items[j].name)
+                            when 'jpg'
+                              a(style="width:100%;height:100%;display:block;text-align:center;",href="/media/vote/"+data[i].items[j].image,data-fancybox,data-caption=data[i].items[j].name)
+                                img(style="max-width:100%;max-height:100%;margin:auto;",src="/media/vote/"+data[i].items[j].image,alt=data[i].items[j].name)
+                            when 'JPG'
+                              a(style="width:100%;height:100%;display:block;text-align:center;",href="/media/vote/"+data[i].items[j].image,data-fancybox,data-caption=data[i].items[j].name)
+                                img(style="max-width:100%;max-height: 100%;margin:auto;",src="/media/vote/"+data[i].items[j].image,alt=data[i].items[j].name)
+                            when 'jpeg'
+                              a(style="width:100%;height:100%;display:block;text-align:center;",href="/media/vote/"+data[i].items[j].image,data-fancybox,data-caption=data[i].items[j].name)
+                                img(style="max-width:100%;max-height: 100%;margin:auto;",src="/media/vote/"+data[i].items[j].image,alt=data[i].items[j].name)
+                            when 'JPEG'
+                              a(style="width:100%;height:100%;display:block;text-align:center;",href="/media/vote/"+data[i].items[j].image,data-fancybox,data-caption=data[i].items[j].name)
+                                img(style="max-width:100%;max-height: 100%;margin:auto;",src="/media/vote/"+data[i].items[j].image,alt=data[i].items[j].name)
+                            when 'mp3'
+                              audio(style="width:100%;padding:80px 0px;margin:auto;",controls,src="/media/vote/"+data[i].items[j].image)
+                            when 'mp4'
+                              video(style="width:100%;height: 100%;",controls="controls")
+                                source(style="height:200px;margin:auto;",src="/media/vote/"+data[i].items[j].image,alt=data[i].items[j].name)                                
+                            when 'wmv'
+                              div(style="width:100%;height:200px;padding:90px 0px;",controls="controls")
+                                a(style="display:block;height:20px;text-align:center",href="/media/vote/"+data[i].items[j].image)="Скачайте видео"
+                        .panel-footer(style="height:40px;text-align:center")
+                          if data[i].results
+                            span=data[i].items[j].count
+            else
+                .list-group
+                  - for(var j=0;j<data[i].items.length;j++)
+                    a.list-group-item(href="#")
+                      .radio
+                        label(style="width:100%;")
+                          input(class="vote-"+data[i].id,type="radio",name="vote",value=data[i].id+"-"+data[i].items[j].id)
+                          span=data[i].items[j].name

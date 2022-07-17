@@ -1,0 +1,114 @@
+html,body{
+	height:100%;
+}
+.dataTables_wrapper .sticky-top:not(.polyfil){
+	top:54px;
+}
+.dataTables_wrapper .dt-buttons.btn-group span{
+	color:white !important;
+	font-weight:900 !important;
+}
+.dataTables_wrapper .dataTables_filter{
+	flex-grow: 1;
+    justify-content: center;
+    display: flex;
+    padding: 0px 5px 0px 30px;
+}
+.dataTables_wrapper .dataTables_filter label{
+	width: 100%;    
+}
+.dataTables_wrapper .dataTables_filter label input{
+	width: calc(100% - 5em) !important;
+	margin-right:10px;
+}
+.dataTables_wrapper .dataTables_length{
+	margin: 0px 1em;
+}
+.dataTables_wrapper .dataTables_length label select{
+	width:60px !important;
+}
+.dataTables_filter label,.dataTables_wrapper .dataTables_length label {
+	margin:0px;
+	font-weight: 900 !important;
+    color: white;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+	padding: 0px 0px 0px 1px !important;
+	margin:0px !important;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 80px;
+  background-color: #f9f9f9 !important;
+}
+table.dataTable tbody th, table.dataTable tbody td{
+	font-size: 12px;
+}
+.form-group label{
+	top:-9px;
+	font-size:100%;
+	left:25px;
+	background:white;
+	height:15px;
+	/*top:10px;
+	font-size:100%;
+	left:25px;*/
+}
+.form-group > .form-control:blank + label{
+	top:10px;
+	font-size:100%;
+	left:25px;
+	background:inherit;
+	height:15px;
+}
+/*.form-group > .form-control:focus + label{
+	top:-9px;
+	font-size:100%;
+	left:25px;
+	background:white;
+	height:15px;
+}*/
+.form-group .hint{
+	font-size: 80%;
+	display: none;
+	position: absolute;
+}
+.form-group{
+	position:relative;
+}
+.form-group label{
+	bottom:0px;
+	position:absolute;
+}
+.panel-heading .close{
+	color: inherit !important; 
+}
+.modal-body .panel-heading .panel-title{
+	font-size:24px !important;
+}
+.modal-body dt, dd {
+    line-height: 1.42857 !important;
+}
+.modal-body .dl-horizontal dt{
+	width: 240px !important;
+}
+.modal-body .dl-horizontal dd {
+    margin-left: 260px !important;
+}
+.blockquote-reverse{
+    line-height: 1.42857 !important;
+}
+.tikets-icon{
+	width:76px !important;
+	font-size:3em !important;
+	line-height:76px !important;
+}
+#attachment + .hint,#form-registration + .hint,#login-form .hint{
+    display: block !important;
+}
+.panel.links:hover{
+	border: 1px solid #EEEEEE;
+	border-radius:5px;
+	outline: 2px solid #03A9F4;
+}
+.links-link,.links-link:hover{text-decoration:none;}

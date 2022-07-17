@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    block head
+      title=params.siteName+':'+title
+      meta(http-equiv="X-UA-Compatible",content="IE=Edge")
+      link(rel='stylesheet', href='/css/clients/bootstrap.min.css')
+      link(rel='stylesheet', href='/css/clients/clients.style.css')
+      link(rel='stylesheet', href='/css/font-awesome.min.css')
+      script(type='text/javascript', src='/js/jquery.min.js')
+      script(src='/js/clients/popper.min.js')
+      script(type='text/javascript', src='/js/clients/bootstrap.min.js')
+      script(type='text/javascript', src='/js/clients/jquery.parser.js')
+      script(type='text/javascript', src='/js/clients/jquery.form.js')
+      script(type='text/javascript', src='/js/clients/main.js')
+      script(type='text/javascript', src='/js/clients/detect.js')
+      script(type='text/javascript', src='/js/clients/css3-mediaqueries.js')
+  body#app
+    #dtBox
+    include ../partials/clientTopNavigation.jade
+    .container-fluid
+      .row
+        block content           

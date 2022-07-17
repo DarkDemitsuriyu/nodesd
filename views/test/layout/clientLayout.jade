@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    block head
+      title=params.siteName+':'+title
+      link(rel='stylesheet', href='/css/clients/materialize.min.css')
+      link(rel='stylesheet', href='/css/style.css')
+      script(type='text/javascript', src='/js/jquery.min.js')
+      script(type='text/javascript', src='/js/clients/materialize.min.js')
+      script(type='text/javascript', src='/js/clients/jquery.parser.js')
+      script(type='text/javascript', src='/js/clients/jquery.form.js')
+      script(type='text/javascript', src='/js/clients/main.js')
+  body
+    include ../partials/clientTopNavigation.jade
+    .row
+      .col.s3
+        .panel.panel-primary
+          .panel-heading
+            h3.panel-title=params.lefttipes.infotiketstitle
+          .panel-body
+            input#tikets-info-input.form-control.floating-label(type='text',placeholder=params.lefttipes.infotiketsinput)
+            a#tiket-info-btn.btn.btn-default.btn-raised=params.lefttipes.infotiketsbutton
+        .panel.panel-success
+          .panel-heading
+            h3.panel-title=params.lefttipes.newstitle
+          .panel-body
+            h4.text-right
+              span.label.label-primary=params.news.date
+            p.blockquote-reverse!=params.news.text
+      .col.s9
+        block content
