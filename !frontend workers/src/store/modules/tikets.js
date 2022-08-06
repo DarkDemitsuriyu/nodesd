@@ -103,7 +103,6 @@ export default {
     TIKET_LEFT_VIEW_SELECTED_DELETE(state){
       state.leftViewTiketSelected = null
     },
-
     SET_TIKETS_LIST(state, {item:data,type}) {
       if(type==='archive'){
         state.archive = data.count        
